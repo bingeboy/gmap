@@ -15,7 +15,7 @@
     script.async = true;
     script.src = 'https://maps.googleapis.com/maps/api/js?callback=HTMLXGmapElement.initializeMaps' + params;
     document.body.appendChild(script);
-  };
+  }
   
   function initialize(node){
     node.xtag.overlays = {
@@ -42,7 +42,7 @@
     };
     node.xtag.directions.renderer.setMap(map);
     node.xtag.ready = true;
-  };
+  }
   
   HTMLXGmapElement = xtag.register('x-gmap', {
     lifecycle: {
@@ -67,7 +67,7 @@
       lat: {
         attribute: {
           validate: function(coord){
-            return 1 * coord || -36.974777
+            return 1 * coord || -36.974777;
           }
         },
         get: function(){
@@ -77,7 +77,7 @@
       lng: {
         attribute: {
           validate: function(coord){
-            return 1 * coord || -122.024459
+            return 1 * coord || -122.024459;
           }
         },
         get: function(){
@@ -136,7 +136,7 @@
               waypoints: obj.waypoints,
               optimizeWaypoints: !!obj.optimize,
               travelMode: google.maps.TravelMode[(obj.mode || 'DRIVING').toUpperCase()]
-            }
+            };
         this.xtag.directions.service.route(request, function(response, status) {
           if (status != maps.DirectionsStatus.OK) {
             console.error(status);
@@ -181,6 +181,6 @@
     loading = false;
     HTMLXGmapElement.ready = true;
     xtag.fireEvent(document, 'gmapready');
-  }
+  };
 
 })();
